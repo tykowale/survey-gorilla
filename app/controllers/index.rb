@@ -37,9 +37,14 @@ get '/user/:user_id' do
   erb :"users/show"
 end
 
-get '/user/:user_id/survey/new'
-  erb: ''
+get '/user/:user_id/survey/change' do
+
+
+
+  erb :'surveys/change'
 end
 
-post '/user/'
+post '/user/' do
+
+end
 

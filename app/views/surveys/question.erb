@@ -1,0 +1,10 @@
+<div id="survey_question<%=@question_number%>">
+
+  <form class="question">
+
+    <h2><input type="text" name="question_<%="#{@question_number}"%>" placeholder="type your question"></h2>
+
+    <%= erb :answer %>
+
+  </form>
+</div>

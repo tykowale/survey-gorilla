@@ -3,22 +3,6 @@
 
 <div class="container">
 
-  <div id="survey_question<%=@question_number%>">
-
-    <form class="question">
-
-      <h2><input type="text" name="question_<%="#{@question_number}"%>" placeholder="type your question"></h2>
-
-      <div id="answer<%=@answer_number%>">
-
-        <input type="text" name="answer_<%="#{@answer_number}"%>" placeholder="type your answer">
-
-      </div>
-
-    </form>
-  </div>
-
-
-
+  <%= erb :question %>
 
 </div>
