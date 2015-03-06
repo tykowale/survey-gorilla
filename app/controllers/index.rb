@@ -21,12 +21,25 @@ get '/user/new' do
 end
 
 post '/user/new' do
-  redirect '/user/:user_id'
+  @user = User.create(params[:email], params[:password])
+    if @user
+      session[:user_id] = @user.id
+      redirect "/user/#{@user.id}/"
+    else
+      redirect '/login'
+    end
 end
+
 
 get '/user/:user_id' do
   @user = User.find(params[:user_id])
   @surveys = @user.surveys
-  erb :index
+  erb :"users/show"
 end
+
+get '/user/:user_id/survey/new'
+  erb: ''
+end
+
+post '/user/'
 
