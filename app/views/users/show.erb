@@ -1,1 +1,9 @@
 <!-- shows user profile, which has list of names of all their surveys, which can be clicked on to edit -->
+<h2>Welcome, <%= @user.name %>!</h2>
+<h3>My Surveys</h3>
+
+<ul>
+  <% @user.surveys.each do |survey| %>
+    <li><a href="/user/<%= survey.user.id %>/survey/<%= survey.id %>"><%= survey.title %></a></li>
+  <% end %>
+</ul>

@@ -1,1 +1,14 @@
-<!-- place where a user can respond to a survey and submit their cohices -->
+<!-- place where a user can respond to a survey and submit their choices -->
+<h2><% @survey.title %></h2>
+
+<form action="/survey/<%= @survey.id %>/submit" method="post">
+  <ol>
+    <% @survey.questions.each do |question| %>
+      <li><%= question.text %></li>
+      <% question.choices.each do |choice| %>
+        <input type="radio" name="<%= question.id %>" value="<%= choice.id%>"><%= choice.response %><br>
+      <% end %>
+    <% end %>
+  </ol>
+  <input class="submit_form" type="submit" value="Submit">
+</form>
