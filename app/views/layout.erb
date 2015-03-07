@@ -13,11 +13,17 @@
   <link rel="stylesheet" href="/css/application.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Gentium+Basic:400,700,400italic|Oswald' rel='stylesheet' type='text/css'>
   <script src="/js/application.js"></script>
 
   <title></title>
 </head>
 <body>
+  <% if session[:user.id] %>
+    <!-- navbar here -->
+    <h1>SURVEY GORILLA</h1>
+    <nav><a href='/user/<%= session[:user_id] %>'>My Surveys</a> <a href='/user/<%= session[:user_id] %>/survey/new'>Create Survey</a> <a href='/surveys/all'>All Surveys</a></nav>
+  <% end %>
   <%= yield %>
 </body>
 </html>

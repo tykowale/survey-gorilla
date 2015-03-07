@@ -10,41 +10,45 @@ post '/login' do
   @user = User.authenticate(params[:email], params[:password])
     if @user
       session[:user_id] = @user.id
-      redirect "/users/#{@user.id}/"
+      redirect "/users"
     else
       redirect '/login'
     end
 end
 
-get '/user/new' do
-  erb :"users/new"
+get '/users/new' do
+  erb :'users/new'
 end
 
-post '/user/new' do
-  @user = User.create(params[:email], params[:password])
-    if @user
-      session[:user_id] = @user.id
-      redirect "/user/#{@user.id}/"
-    else
-      redirect '/login'
-    end
+post '/users/new' do
+  # sign-up
+  @user = User.new params[:user]
+  if @user.save
+    # successfully created new account; set up the session and redirect
+    session[:user_id] = @user.id
+    redirect '/users'
+  else
+    # an error occurred, re-render the sign-up form, displaying errors
+    erb :sign_up
+  end
 end
 
 
-get '/user/:user_id' do
-  @user = User.find(params[:user_id])
-  @surveys = @user.surveys
+get '/users' do
+  @user = User.find_by(id: session[:user_id])
+  # @user = User.find(params[:user_id])
+  # @surveys = @user.surveys
   erb :"users/show"
 end
 
-get '/user/:user_id/survey/change' do
+# get '/surveys/:id/new' do
 
 
 
-  erb :'surveys/change'
-end
+#   erb :'surveys/new'
+# end
 
-post '/user/' do
+# post '/user/' do
 
-end
+# end
 

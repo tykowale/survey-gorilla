@@ -1,1 +1,13 @@
-<!-- place for owner to see results and responses to their survey -->
+<h2>Current Responses for <%= @survey.title %></h2>
+
+<ol>
+  <% @survey.questions.each do |question| %>
+    <li><%= question.text %></li>
+    <ul>
+      <% question.choices.each do |choice| %>
+        <li><%= choice.response %> - <%= choice.answers.count %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  <% end %>
+</ol>

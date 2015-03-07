@@ -7,9 +7,9 @@
     <% end %>
   <% end %>
 
-<form action="/new" method="POST">
-  <input type="text" name="name" placeholder="Your Name"/>
-  <input type="text" name="email" placeholder="Email"/>
-  <input type="password" name="password" placeholder="Password"/>
+<form action="/users/new" method="POST">
+  <input type="text" name="user[name]" placeholder="Your Name"/>
+  <input type="text" name="user[email]" placeholder="Email"/>
+  <input type="password" name="user[password]" placeholder="Password"/>
   <input type="submit" value="Sign Up">
 </form>
