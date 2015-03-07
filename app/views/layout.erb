@@ -22,7 +22,11 @@
   <% if session[:user_id] %>
     <!-- navbar here -->
     <h1>SURVEY GORILLA</h1>
-    <nav><a href='/user/<%= session[:user_id] %>'>My Surveys</a> <a href='/user/<%= session[:user_id] %>/survey/new'>Create Survey</a> <a href='/surveys/all'>All Surveys</a></nav>
+    <nav>
+      <a href='/users'>My Surveys</a>
+      <a href='surveys/new'>Create Survey</a>
+      <a href='/surveys/all'>All Surveys</a>
+      <a href='/logout'>Logout</a></nav>
   <% end %>
   <%= yield %>
 </body>

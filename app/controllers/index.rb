@@ -16,6 +16,11 @@ post '/login' do
     end
 end
 
+get '/logout' do
+  session.clear
+  redirect '/login'
+end
+
 get '/users/new' do
   erb :'users/new'
 end
