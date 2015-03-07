@@ -46,10 +46,18 @@ get '/users' do
   erb :"users/show"
 end
 
-# get '/surveys/:id/new' do
+get '/surveys/name' do
+  erb :'surveys/name'
+end
 
+post '/surveys/name' do
+  survey = Survey.create(title: params[:title])
+  redirect '/surveys/<%=survey.id%>/new'
+end
 
+get 'surveys/:id/new' do
 
+end
 #   erb :'surveys/new'
 # end
 
