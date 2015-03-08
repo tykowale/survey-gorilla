@@ -1,12 +1,12 @@
 <!-- (for creator of survey) has button to review data, delete survey, go to page that lets them edit the contents , and open/close the survey. also lists all current answers/questions and has link to give people to take the survey -->
 <h2><%= @survey.title %></h2>
 <div id="survey_crud_buttons">
-  <% if @survey.open %>
+  <% if @survey.active %>
     <button onclick="">Close</button> <!--NEEDS AJAXIFYING -->
   <% else %>
     <button onclick="">Open</button> <!--NEEDS AJAXIFYING -->
   <% end %>
-  <button onclick=""location.href='/user/<%= @survey.user.id %>/survey/<%= @survey.id %>/change'"">Edit</button>
+  <button onclick=""location.href='/surveys/<%= @survey.id %>/change'"">Edit</button>
   <button onclick="">Delete</button> <!-- NEEDS AJAX ROUTE-->
-  <button onclick="location.href='/user/<%= @survey.user.id %>/survey/<%= @survey.id %>/results'">Review Data</button>
+  <button onclick="location.href='/surveys/<%= @survey.id %>/results'">Review Data</button>
 </div>

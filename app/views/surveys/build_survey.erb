@@ -1,8 +1,8 @@
 <div id="survey_question">
 
-  <
+  <%= erb :"surveys/question" %>
 
-  <form class="save_survey" action="surveys/<%=@survey.id%>/save" method="post">
+  <form class="save_survey" action="/surveys/<%=@survey.id%>/save" method="post">
     <input type="submit" value="Save Survey for Publication">
   </form>
 
