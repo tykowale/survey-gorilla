@@ -7,21 +7,21 @@ class User < ActiveRecord::Base
   has_many :choices, through: :questions
   has_many :answers, through: :choices
 
+
   def password
-    @password ||= Password.new(self.password_hash)
+    @password ||= Password.new(password_hash)
   end
 
-  def password=(value)
-    @password = Password.create(value)
+  def password=(pass)
+    @entered_password = pass
+    @password = Password.create(pass)
     self.password_hash = @password
   end
 
-  def authenticate(email, pw)
-    if self.email == email && password == pw
-      self
-    else
-      nil
-    end
+  def self.authenticate(email, password)
+    user = User.find_by_email(email)
+    return user if user && (user.password == password)
+    nil # either invalid email or wrong password
   end
 
 end
