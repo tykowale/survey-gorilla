@@ -4,7 +4,6 @@
 
 <ul>
   <% @user.surveys.each do |survey| %>
-    <%= survey.title %></a></li>
-    <li><a href="/survey/<%= survey.id %>"><%= survey.title %></a></li>
+    <li><a href="/surveys/<%= survey.id %>/change"><%= survey.title %></a></li>
   <% end %>
 </ul>
