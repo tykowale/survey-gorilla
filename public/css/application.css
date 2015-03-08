@@ -1,0 +1,62 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/*HEADER*/
+header {
+  height: 175px;
+  width: 100%;
+}
+
+#title {
+  height: 132px;
+}
+
+h1 {
+  padding-left: 0.25em;
+  font-family: 'Oswald', sans-serif;
+  margin-top: 0px;
+  font-size: 350%;
+  position: relative;
+  top: 1em;
+}
+
+#title > img {
+  width: 200px;
+  float: right;
+}
+
+/* NAVBAR */
+nav {
+  padding: 0.5em 2em;
+  background-color: black;
+  color: white;
+  font-family: 'Gentium Basic', serif;
+}
+
+nav > a {
+  color: white;
+  text-decoration: none;
+  padding-right: 1em;
+}
+
+nav > a:hover {
+  color: #FAAC69;
+}
+
+/*MAIN CONTENT*/
+.main {
+  font-family: 'Gentium Basic', serif;
+  flex: 1;
+  padding-left: 1.5em;
+}
+
+h2 {
+
+}
+
+h3 {
+
+}

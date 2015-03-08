@@ -96,7 +96,7 @@ get "/surveys/:survey_id/show" do
 end
 
 #Find user, and find survey by id
-get '/survey/:survey_id/show' do
+get '/surveys/:survey_id/show' do
   @survey = Survey.find(params[:survey_id])
    if session[:user_id] == params[:user_id]
     erb :"surveys/show"
@@ -105,7 +105,7 @@ get '/survey/:survey_id/show' do
   end
 end
 
-get '/survey/:survey_id/results' do
+get '/surveys/:survey_id/results' do
   @survey = Survey.find(params[:survey_id])
   if session[:user_id] == params[:user_id]
     erb :"surveys/results"
@@ -115,7 +115,7 @@ get '/survey/:survey_id/results' do
 end
 
 
-get '/survey/:survey_id/respond' do
+get '/surveys/:survey_id/respond' do
   @survey = Survey.find(params[:'/survey_id'])
   erb :'surveys/respond'
 end
@@ -127,7 +127,7 @@ get '/surveys/all' do
 end
 
 
-get '/survey/:survey_id/change' do
+get '/surveys/:survey_id/change' do
   @user = User.find_by(session[:user_id])
   @survey = Survey.find(params[:survey_id])
    if session[:user_id] == params[:user_id]
@@ -138,19 +138,19 @@ get '/survey/:survey_id/change' do
 end
 
 
-post '/survey/:survey_id/change' do
+post '/surveys/:survey_id/change' do
   @user = User.find_by(session[:user_id])
   @survey = Survey.find(params[:survey_id])
   redirect "/user/#{@user.id}/survey/#{@survey.id}"
 end
 
-post '/survey/:survey_id/' do
+post '/surveys/:survey_id/' do
   @user = User.find_by(session[:user_id])
   @survey = Survey.find(params[:survey_id])
 
 end
 
-delete '/survey/:survey_id/' do
+delete '/surveys/:survey_id/' do
   @user = User.find_by(session[:user_id])
   @survey = Survey.find(params[:survey_id])
 end

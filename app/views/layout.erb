@@ -20,15 +20,23 @@
   <title></title>
 </head>
 <body>
-  <% if session[:user_id] %>
-    <!-- navbar here -->
-    <h1>SURVEY GORILLA</h1>
-    <nav>
-      <a href='/users'>My Surveys</a>
-      <a href='surveys/name'>Create Survey</a>
-      <a href='/surveys/all'>All Surveys</a>
-      <a href='/logout'>Logout</a></nav>
-  <% end %>
-  <%= yield %>
+  <div class="container">
+    <% if session[:user_id] %>
+    <header>
+      <div id="title">
+        <img src='/imgs/gorilla.jpg'>
+        <h1>SURVEY GORILLA</h1>
+      </div>
+      <nav>
+        <a href='/users'>MY SURVEYS</a>
+        <a href='/surveys/name'>CREATE SURVEY</a>
+        <a href='/surveys/all'>ALL SURVEYS</a>
+        <a href='/logout'>LOGOUT</a></nav>
+    </header>
+    <% end %>
+    <div class="main">
+    <%= yield %>
+    </div>
+  </div>
 </body>
 </html>
