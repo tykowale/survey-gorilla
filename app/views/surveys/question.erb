@@ -1,11 +1,12 @@
-<div id="survey_question">
+  <form class="question" action="/surveys/:id/add_question" method="post">
 
-  <form class="question">
+    <h2><input type="text" name="question" placeholder="type your question"></h2>
 
-    <h2><input type="text" name="question_<%="#{@question_number}"%>" placeholder="type your question"></h2>
+    <input type="text" name="answer_1" placeholder="type your answer">
+    <input type="text" name="answer_1" placeholder="type your answer">
+    <input type="text" name="answer_1" placeholder="type your answer">
+    <input type="text" name="answer_1" placeholder="type your answer">
 
-    <%= erb :"surveys/answer" %>
+    <input type="submit" value="Add Another Question"
 
   </form>
-
-</div>

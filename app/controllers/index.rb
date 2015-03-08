@@ -2,6 +2,8 @@ get '/' do
   redirect '/login'
 end
 
+## Login
+
 get '/login' do
   erb :index
 end
@@ -21,6 +23,8 @@ get '/logout' do
   redirect '/login'
 end
 
+## Create New Users
+
 get '/users/new' do
   erb :'users/new'
 end
@@ -38,6 +42,7 @@ post '/users/new' do
   end
 end
 
+## User Homepage
 
 get '/users' do
   @user = User.find_by(id: session[:user_id])
@@ -46,22 +51,34 @@ get '/users' do
   erb :"users/show"
 end
 
+
+## Create Surveys
+
 get '/surveys/name' do
   erb :'surveys/name'
 end
 
 post '/surveys/name' do
   survey = Survey.create(title: params[:title])
-  redirect '/surveys/<%=survey.id%>/new'
+  redirect "/surveys/#{survey.id}/new"
 end
 
-get 'surveys/:id/new' do
-
+get '/surveys/:id/new' do
+  @survey = Survey.find_by(id: params[:id])
+  erb :'surveys/question'
 end
-#   erb :'surveys/new'
-# end
 
-# post '/user/' do
+post '/surveys/:id/add_question' do
+  if request.xhr?
+    end
+end
 
-# end
+post "/surveys/:id/save" do
+## Need to save last question on the page!
+  redirect "/surveys/show"
+end
+
+get "surveys/show" do
+  erb :"survey/show"
+end
 
