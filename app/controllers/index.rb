@@ -74,21 +74,17 @@ get '/surveys/:survey_id/new' do
 end
 
 post '/surveys/:survey_id/add_question' do
+  @survey = Survey.find_by(id: params[:survey_id])
   question = Question.create(survey: Survey.find_by(id: params[:survey_id]), question_text: params[:question_text])
   Choice.create(question: question, response: params[:answer_1])
   Choice.create(question: question, response: params[:answer_2])
   Choice.create(question: question, response: params[:answer_3])
   Choice.create(question: question, response: params[:answer_4])
   if request.xhr?
-    erb :"surveys/question"
+    erb :"surveys/question", layout: false
   end
 end
 
-post "/surveys/:survey_id/save" do
-  @survey = Survey.find_by(params[id: :survey_id])
-## Need to save last question on the page!
-  redirect "/surveys/#{@survey.id}/show"
-end
 
 get "/surveys/:survey_id/show" do
   @survey = Survey.find_by(params[id: :survey_id])
@@ -154,7 +150,6 @@ delete '/surveys/:survey_id/' do
   @user = User.find_by(session[:user_id])
   @survey = Survey.find(params[:survey_id])
 end
-
 
 
 
