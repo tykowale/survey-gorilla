@@ -3,7 +3,7 @@
 <form action="/surveys/<%= @survey.id %>/submit" method="post">
   <ol>
     <% @survey.questions.each do |question| %>
-      <li><%= question.text %></li>
+      <li><%= question.question_text %></li>
       <% question.choices.each do |choice| %>
         <input type="radio" name="<%= question.id %>" value="<%= choice.id%>"><%= choice.response %><br>
       <% end %>

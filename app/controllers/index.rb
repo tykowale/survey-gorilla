@@ -87,7 +87,7 @@ end
 
 
 get "/surveys/:survey_id/show" do
-  @survey = Survey.find_by(params[id: :survey_id])
+  @survey = Survey.find_by(id: params[:survey_id])
   erb :"surveys/show"
 end
 
@@ -112,7 +112,7 @@ end
 
 
 get '/surveys/:survey_id/respond' do
-  @survey = Survey.find(params[:'/survey_id'])
+  @survey = Survey.find_by(id: params[:survey_id])
   erb :'surveys/respond'
 end
 
@@ -124,8 +124,8 @@ end
 
 
 get '/surveys/:survey_id/change' do
-  @user = User.find_by(session[:user_id])
-  @survey = Survey.find(params[:survey_id])
+  @user = User.find_by(id: session[:user_id])
+  @survey = Survey.find_by(id: params[:survey_id])
    if session[:user_id] == params[:user_id]
     erb :"surveys/change"
   else
@@ -135,21 +135,31 @@ end
 
 
 post '/surveys/:survey_id/change' do
-  @user = User.find_by(session[:user_id])
-  @survey = Survey.find(params[:survey_id])
+  @user = User.find_by(id: session[:user_id])
+  @survey = Survey.find_by(id: params[:survey_id])
   redirect "/user/#{@user.id}/survey/#{@survey.id}"
 end
 
 post '/surveys/:survey_id/' do
-  @user = User.find_by(session[:user_id])
-  @survey = Survey.find(params[:survey_id])
+  @user = User.find_by(id: session[:user_id])
+  @survey = Survey.find_by(id: params[:survey_id])
 
 end
 
 delete '/surveys/:survey_id/' do
-  @user = User.find_by(session[:user_id])
-  @survey = Survey.find(params[:survey_id])
+  @user = User.find_by(id: session[:user_id])
+  @survey = Survey.find_by(id: params[:survey_id])
 end
 
+post '/surveys/:survey_id/submit' do
+  param_array = params.to_a
+  param_array.pop(3)
+  param_array.shift(1)
 
+  param_array.each do |pair|
+    Answer.create(choice: Choice.find_by(id: pair[1]), user: User.find_by(id: session[:user_id]))
+  end
+
+  redirect '/users'
+end
 
