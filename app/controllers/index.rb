@@ -63,22 +63,86 @@ post '/surveys/name' do
   redirect "/surveys/#{survey.id}/new"
 end
 
-get '/surveys/:id/new' do
-  @survey = Survey.find_by(id: params[:id])
+get '/surveys/:survey_id/new' do
+  @survey = Survey.find_by(id: params[:survey_id])
   erb :'surveys/question'
 end
 
-post '/surveys/:id/add_question' do
+post '/surveys/:survey_id/add_question' do
   if request.xhr?
-    end
+
+  end
 end
 
-post "/surveys/:id/save" do
+post "/surveys/:survey_id/save" do
 ## Need to save last question on the page!
   redirect "/surveys/show"
 end
 
-get "surveys/show" do
+get "/surveys/show" do
   erb :"survey/show"
 end
+
+#Find user, and find survey by id
+get '/survey/:survey_id/show' do
+  @survey = Survey.find(params[:survey_id])
+   if session[:user_id] == params[:user_id]
+    erb :"surveys/show"
+  else
+    redirect '/'
+  end
+end
+
+get '/survey/:survey_id/results' do
+  @survey = Survey.find(params[:survey_id])
+  if session[:user_id] == params[:user_id]
+    erb :"surveys/results"
+  else
+    redirect '/'
+  end
+end
+
+
+get '/survey/:survey_id/respond' do
+  @survey = Survey.find(params[:'/survey_id'])
+  erb :'surveys/respond'
+end
+
+get '/surveys/all' do
+  @surveys = Survey.all
+
+  erb :'surveys/all'
+end
+
+
+get '/survey/:survey_id/change' do
+  @user = User.find_by(session[:user_id]])
+  @survey = Survey.find(params[:survey_id])
+   if session[:user_id] == params[:user_id]
+    erb :"surveys/change"
+  else
+    redirect '/'
+  end
+end
+
+
+post '/survey/:survey_id/change' do
+  @user = User.find_by(session[:user_id]])
+  @survey = Survey.find(params[:survey_id])
+  redirect "/user/#{@user.id}/survey/#{@survey.id}"
+end
+
+post '/survey/:survey_id/' do
+  @user = User.find_by(session[:user_id]])
+  @survey = Survey.find(params[:survey_id])
+
+end
+
+delete '/survey/:survey_id/' do
+  @user = User.find_by(session[:user_id]])
+  @survey = Survey.find(params[:survey_id])
+end
+
+
+
 
