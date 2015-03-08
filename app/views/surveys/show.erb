@@ -6,7 +6,7 @@
   <% else %>
     <button onclick="">Open</button> <!--NEEDS AJAXIFYING -->
   <% end %>
-  <button onclick=""location.href='/users/<%= @survey.user.id %>/survey/<%= @survey.id %>/change'"">Edit</button>
+  <button onclick=""location.href='/surveys/<%= @survey.id %>/change'"">Edit</button>
   <button onclick="">Delete</button> <!-- NEEDS AJAX ROUTE-->
-  <button onclick="location.href='/users/<%= @survey.user.id %>/survey/<%= @survey.id %>/results'">Review Data</button>
+  <button onclick="location.href='/surveys/<%= @survey.id %>/results'">Review Data</button>
 </div>
