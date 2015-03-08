@@ -1,12 +1,12 @@
-  <form class="question" action="/surveys/:id/add_question" method="post">
+  <form class="question" action="/surveys/<%=@survey.id%>/add_question" method="post">
 
-    <h2><input type="text" name="question" placeholder="type your question"></h2>
+    <h2><input type="text" name="question_text" placeholder="type your question"></h2>
 
     <input type="text" name="answer_1" placeholder="type your answer">
-    <input type="text" name="answer_1" placeholder="type your answer">
-    <input type="text" name="answer_1" placeholder="type your answer">
-    <input type="text" name="answer_1" placeholder="type your answer">
+    <input type="text" name="answer_2" placeholder="type your answer">
+    <input type="text" name="answer_3" placeholder="type your answer">
+    <input type="text" name="answer_4" placeholder="type your answer">
 
-    <input type="submit" value="Add Another Question"
+    <input type="submit" value="Add Another Question">
 
   </form>
