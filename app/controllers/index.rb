@@ -5,7 +5,11 @@ end
 ## Login
 
 get '/login' do
-  erb :index
+  if session[:user_id]
+    redirect '/users'
+  else
+    erb :index
+  end
 end
 
 post '/login' do
@@ -46,6 +50,7 @@ end
 
 get '/users' do
   @user = User.find_by(id: session[:user_id])
+
   # @user = User.find(params[:user_id])
   # @surveys = @user.surveys
   erb :"users/show"
@@ -59,7 +64,7 @@ get '/surveys/name' do
 end
 
 post '/surveys/name' do
-  survey = Survey.create(title: params[:title])
+  survey = Survey.create(title: params[:title], creator: User.find_by(id: session[:user_id]))
   redirect "/surveys/#{survey.id}/new"
 end
 
