@@ -2,7 +2,19 @@ $(document).ready(function(){
 
   $(document).on("submit", ".question", function(e){
     e.preventDefault();
-    console.log("Clicked on a question")
+
+    var form = $(this)
+
+
+    $.ajax({
+      "url": form.attr('action'),
+      "method": form.attr('method'),
+      "data": form.serialize(),
+      "success": function(response){
+        $(".question").replaceWith(response)
+      }
+    })
+
   });
 
 });
