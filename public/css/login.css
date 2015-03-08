@@ -1,0 +1,48 @@
+body {
+  /*background-color: #FAAC69;*/
+  /*font-family: 'Gentium Basic', serif;*/
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  background-image: url("/imgs/jungle_trail.jpg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  min-width: 800px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  text-shadow: 2px 2px #FAAC69;
+  font-size: 500%;
+  text-shadow: 2px 2px #FAAC69;
+  margin-bottom: 0em;
+  margin-top: 2.5em;
+}
+
+h2 {
+  text-shadow: 1px 1px #FAAC69;
+  margin-top: 0em;
+}
+
+h3 > a {
+  margin-top: 0.5em;
+  color: black;
+  text-decoration: none;
+}
+
+h3 > a:hover {
+  color: #FAAC69;
+}
+
+form input[type="submit"] {
+  border: 0px;
+  border-radius: 5px;
+  color: #FAAC69;
+  background-color: black;
+}
+
+form input[type="submit"]:hover {
+  color: black;
+  background-color: #FAAC69;
+}

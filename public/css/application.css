@@ -6,7 +6,7 @@
 
 /*HEADER*/
 header {
-  height: 175px;
+  height: 167px;
   width: 100%;
 }
 
@@ -51,12 +51,8 @@ nav > a:hover {
   font-family: 'Gentium Basic', serif;
   flex: 1;
   padding-left: 1.5em;
-}
-
-h2 {
-
-}
-
-h3 {
-
+  height: 100%;
+background-color: #fcf6e2;
+background-image: url(http://www.transparenttextures.com/patterns/az-subtle.png);
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
