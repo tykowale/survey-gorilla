@@ -10,7 +10,13 @@
   <!--
     application.css is where you put your styles
   -->
-  <link rel="stylesheet" href="/css/application.css">
+  <% if session[:user_id] %>
+    <link rel="stylesheet" href="/css/application.css">
+  <% else %>
+    <link rel="stylesheet" href="/css/login.css">
+  <% end %>
+
+
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Gentium+Basic:400,700,400italic|Oswald' rel='stylesheet' type='text/css'>
